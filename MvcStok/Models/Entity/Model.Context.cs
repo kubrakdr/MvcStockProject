@@ -30,5 +30,6 @@ namespace MvcStok.Models.Entity
         public virtual DbSet<tblPersonel> tblPersonel { get; set; }
         public virtual DbSet<tblSatis> tblSatis { get; set; }
         public virtual DbSet<tblUrunler> tblUrunler { get; set; }
+        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
     }
 }
