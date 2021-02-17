@@ -35,6 +35,7 @@ namespace MvcStok.Controllers
         public ActionResult YeniUrun(tblUrunler t)
         {
             var ktgr = db.tblKategori.Where(x => x.id == t.tblKategori.id).FirstOrDefault();
+            t.durum = true;
             t.tblKategori = ktgr;
             db.tblUrunler.Add(t);
             db.SaveChanges();
