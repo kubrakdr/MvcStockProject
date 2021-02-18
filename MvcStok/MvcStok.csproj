@@ -242,6 +242,7 @@
     <Content Include="Views\Musteri\YeniMusteri.cshtml" />
     <Content Include="Views\Musteri\MusteriGetir.cshtml" />
     <Content Include="Views\Satis\Index.cshtml" />
+    <Content Include="Views\Satis\YeniSatis.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

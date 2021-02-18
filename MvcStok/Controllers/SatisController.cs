@@ -17,5 +17,75 @@ namespace MvcStok.Controllers
             var satislar = db.tblSatis.ToList();
             return View(satislar);
         }
+        [HttpGet]
+        public ActionResult YeniSatis()
+        {
+            //Ürün
+            List<SelectListItem> urun = (from x in db.tblUrunler.ToList()
+                                        select new SelectListItem
+                                        {
+                                            Text = x.ad,
+                                            Value = x.id.ToString() + x.satisfiyat.ToString()
+                                           
+                                        }).ToList();
+
+            ViewBag.drop1 = urun;
+
+            ////fiyat
+            //List<SelectListItem> fiyt = (from x in db.tblUrunler.ToList()
+            //                             select new SelectListItem
+            //                             {
+            //                                 Text = x.satisfiyat.ToString(),
+            //                                 Value =x.satisfiyat.ToString()
+
+            //                             }).ToList();
+
+            //ViewBag.drop4 = fiyt;
+
+
+
+            //Personel
+            List<SelectListItem> per = (from x in db.tblPersonel.ToList()
+                                        select new SelectListItem
+                                        {
+                                            Text = x.ad +" "+ x.soyad,
+                                            Value = x.id.ToString()
+                                        }).ToList();
+
+            ViewBag.drop2 = per;
+
+
+            //Müşteriler
+
+            List<SelectListItem> musteri = (from x in db.tblMusteri.ToList()
+                                        select new SelectListItem
+                                        {
+                                            Text = x.ad + " " + x.soyad,
+                                            Value = x.id.ToString()
+                                        }).ToList();
+
+            ViewBag.drop3 = musteri;
+
+
+            return View();
+        }
+        [HttpPost]
+        public ActionResult YeniSatis(tblSatis s)
+        {
+            var urun = db.tblUrunler.Where(x => x.id == s.tblUrunler.id).FirstOrDefault();
+            var musteri = db.tblMusteri.Where(x => x.id == s.tblMusteri.id).FirstOrDefault();
+            var personel = db.tblPersonel.Where(x => x.id == s.tblPersonel.id).FirstOrDefault();
+            s.tblMusteri = musteri;
+            s.tblPersonel = personel;
+            s.tblUrunler = urun;
+            s.tarih = DateTime.Parse(DateTime.Now.ToShortDateString());
+            db.tblSatis.Add(s);
+            db.SaveChanges();
+
+            return RedirectToAction("Index");
+        }
+
+
+
     }
 }
