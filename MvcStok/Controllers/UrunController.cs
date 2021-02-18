@@ -40,6 +40,7 @@ namespace MvcStok.Controllers
             db.tblUrunler.Add(t);
             db.SaveChanges();
 
+            
             return RedirectToAction("Index");
         }
 
