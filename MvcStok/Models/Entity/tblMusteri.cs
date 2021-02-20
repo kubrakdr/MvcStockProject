@@ -11,8 +11,7 @@ namespace MvcStok.Models.Entity
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class tblMusteri
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -22,10 +21,7 @@ namespace MvcStok.Models.Entity
         }
     
         public int id { get; set; }
-        [Required(ErrorMessage="Ad alanýný boþ geçmeyin..")]
         public string ad { get; set; }
-        [Required(ErrorMessage = "Soyad alanýný boþ geçmeyiniz..")]
-        [StringLength(30,ErrorMessage ="Soyad 30 Karakteri geçemez!")]
         public string soyad { get; set; }
         public string sehir { get; set; }
         public Nullable<decimal> bakiye { get; set; }
