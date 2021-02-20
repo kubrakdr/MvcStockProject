@@ -16,15 +16,14 @@
     </tr>
     @foreach (var x in Model)
     {
-<tr>
-    <td>@x.id</td>
-    <td>@x.tblUrunler.ad</td>
-    <td>@x.tblPersonel.ad @x.tblPersonel.soyad</td>
-    <td>@x.tblMusteri.ad @x.tblMusteri.soyad</td>
-    <td>@x.fiyat</td>
-    <td>@x.tarih</td>
-
-   </tr>
+        <tr>
+            <td>@x.id</td>
+            <td>@x.tblUrunler.ad</td>
+            <td>@x.tblPersonel.ad @x.tblPersonel.soyad</td>
+            <td>@x.tblMusteri.ad @x.tblMusteri.soyad</td>
+            <td>@x.fiyat</td>
+            <td>@x.tarih</td>
+        </tr>
 
     }
 

@@ -15,6 +15,14 @@
           <Property Name="version" Type="int" />
           <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
+        <EntityType Name="tblAdmin">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="kullanici" Type="nvarchar" MaxLength="20" />
+          <Property Name="sifre" Type="nvarchar" MaxLength="20" />
+        </EntityType>
         <EntityType Name="tblKategori">
           <Key>
             <PropertyRef Name="id" />
@@ -104,6 +112,7 @@
         </Association>
         <EntityContainer Name="DbMvcStokModelStoreContainer">
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblAdmin" EntityType="Self.tblAdmin" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblKategori" EntityType="Self.tblKategori" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblMusteri" EntityType="Self.tblMusteri" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblPersonel" EntityType="Self.tblPersonel" Schema="dbo" store:Type="Tables" />
@@ -256,6 +265,7 @@
             <End Role="tblSatis" EntitySet="tblSatis" />
           </AssociationSet>
           <EntitySet Name="sysdiagrams" EntityType="DbMvcStokModel.sysdiagrams" />
+          <EntitySet Name="tblAdmin" EntityType="DbMvcStokModel.tblAdmin" />
         </EntityContainer>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -266,6 +276,14 @@
           <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="version" Type="Int32" />
           <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="tblAdmin">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="kullanici" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="sifre" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -337,6 +355,15 @@
                 <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
                 <ScalarProperty Name="principal_id" ColumnName="principal_id" />
                 <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblAdmin">
+            <EntityTypeMapping TypeName="DbMvcStokModel.tblAdmin">
+              <MappingFragment StoreEntitySet="tblAdmin">
+                <ScalarProperty Name="sifre" ColumnName="sifre" />
+                <ScalarProperty Name="kullanici" ColumnName="kullanici" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
