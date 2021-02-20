@@ -11,11 +11,17 @@ namespace MvcStok.Controllers
     {
         // GET: Urun
         DbMvcStokEntities1 db = new DbMvcStokEntities1();
-
-        public ActionResult Index()
+        [Authorize]
+        public ActionResult Index(string p)
         {
-            var urunler = db.tblUrunler.Where(x=>x.durum==true).ToList();
-            return View(urunler);
+            //var urunler = db.tblUrunler.Where(x=>x.durum==true).ToList();
+            var urunler = db.tblUrunler.Where(x => x.durum == true);
+            if (!string.IsNullOrEmpty(p))
+            {
+                urunler = urunler.Where(x => x.ad.Contains(p) && x.durum == true);
+            }
+
+            return View(urunler.ToList());
         }
         [HttpGet]
         public ActionResult YeniUrun()

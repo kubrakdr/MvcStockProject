@@ -4,6 +4,15 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
+@using (Html.BeginForm("Index", "Urun", FormMethod.Get))
+{
+    <p>
+        Ürün Adı: @Html.TextBox("p")
+        <input type="submit" value="Ara"/>
+    </p>
+
+}
+
 <table class="table table-bordered">
     <tr>
         <th>ID</th>

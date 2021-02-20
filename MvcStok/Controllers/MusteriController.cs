@@ -12,7 +12,9 @@ namespace MvcStok.Controllers
     public class MusteriController : Controller
     {
         DbMvcStokEntities1 db = new DbMvcStokEntities1();
+
         // GET: Musteri
+        [Authorize]
         public ActionResult Index(int sayfa=1)
         {
             // var musteriliste = db.tblMusteri.ToList();
